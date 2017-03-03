@@ -8,7 +8,7 @@ MOUNT_PATH="/mnt"
 
 # Check if the nas is available on the network
 function nas_available {
-  mount_export=$(showmount -e "$NAS_IP" | grep "$NAS_PATH" | sed 's~[[:blank:]]~~g')
+  mount_export=$(/usr/sbin/showmount -e "$NAS_IP" | grep "$NAS_PATH" | sed 's~[[:blank:]]~~g')
   if [ "$mount_export" == "/$NAS_PATH" ]
   then
     echo "0"
